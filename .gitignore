@@ -1,8 +1,8 @@
 .gitignore
 
 # IDEA配置
+*.iml
 .idea
-.iml
 
 *.class
 
