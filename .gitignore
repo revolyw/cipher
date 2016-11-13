@@ -1,3 +1,9 @@
+.gitignore
+
+# IDEA配置
+.idea
+.iml
+
 *.class
 
 # Mobile Tools for Java (J2ME)
