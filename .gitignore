@@ -1,6 +1,7 @@
 .gitignore
 
 # IDEA配置
+target/*
 *.iml
 .idea
 
