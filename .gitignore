@@ -1,5 +1,6 @@
 .gitignore
-
+#操作系统文件
+*.DS_Store
 # IDEA配置
 target/*
 *.iml

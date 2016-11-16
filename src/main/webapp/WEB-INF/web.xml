@@ -5,6 +5,7 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
 
+    <!--ContextConfig-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -13,6 +14,7 @@
     </context-param>
 
 
+    <!--Encoding-->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -32,15 +34,20 @@
     </filter-mapping>
 
 
-    <!--<servlet>-->
-        <!--<servlet-name>DispatcherServlet</servlet-name>-->
-        <!--<servlet-class>org.springframework.web.</servlet-class>-->
-        <!--<load-on-startup>1</load-on-startup>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>DispatcherServlet</servlet-name>-->
-        <!--<url-pattern>/*</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <!--DispatcherServlet-->
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 </web-app>
 
 
