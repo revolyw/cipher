@@ -9,10 +9,14 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:spring/ApplicationContext.xml
+            /WEB-INF/dispatcher-servlet.xml,
+            classpath:spring/applicationContext.xml <!--须配置ContextLoaderListener才能生效-->
         </param-value>
     </context-param>
-
+    <!--ContextLoader Listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <!--Encoding-->
     <filter>
@@ -36,16 +40,12 @@
 
     <!--DispatcherServlet-->
     <servlet>
-        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
-        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>
