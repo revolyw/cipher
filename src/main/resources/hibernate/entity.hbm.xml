@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping package="model">
+    <class name="User" table="user">
+        <id column="id" name="id">
+            <generator class="native"/>
+        </id>
+    </class>
+</hibernate-mapping>

@@ -14,6 +14,11 @@ public class AjaxResult {
         this.data = null;
     }
 
+    //静态工厂方法
+    public static AjaxResult newInstance() {
+        return new AjaxResult();
+    }
+
     public Boolean getSuccess() {
         return isSuccess;
     }
@@ -37,4 +42,6 @@ public class AjaxResult {
     public void setData(Object data) {
         this.data = data;
     }
+
+
 }

@@ -1,7 +1,11 @@
 package controller;
 
+import dao.UserDao;
 import dto.AjaxResult;
 import model.Cipher;
+import model.User;
+import org.jboss.jandex.Result;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import util.ExcelUtil;
@@ -41,6 +45,18 @@ public class RestfulController {
             result.setMsg("解析失败");
             result.setSuccess(false);
         }
+        return result;
+    }
+
+    /**
+     * 测试数据源配置
+     * @return
+     */
+    @RequestMapping("/testDataSource")
+    public AjaxResult testDataSource(){
+        AjaxResult result = AjaxResult.newInstance();
+        User user = new UserDao().find("willow");
+        result.setData(user);
         return result;
     }
 }

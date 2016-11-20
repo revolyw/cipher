@@ -1,11 +1,17 @@
 .gitignore
-#操作系统文件
+
+# 操作系统文件
 *.DS_Store
+
 # IDEA配置
 target/*
 *.iml
 .idea
 
+# 数据库脚本
+cipher.sql
+
+# 字节码文件
 *.class
 
 # Mobile Tools for Java (J2ME)
