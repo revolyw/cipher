@@ -9,6 +9,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <junit.version>4.12</junit.version>
         <spring.context.version>4.3.3.RELEASE</spring.context.version>
         <spring.mvc.version>4.3.2.RELEASE</spring.mvc.version>
         <spring.orm.version>4.3.3.RELEASE</spring.orm.version>
@@ -18,6 +19,13 @@
     </properties>
 
     <dependencies>
+        <!--UA util-->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.20</version>
+        </dependency>
+
         <!--druid-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -52,7 +60,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <!--spring-->
