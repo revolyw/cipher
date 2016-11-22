@@ -1,19 +1,13 @@
 package model;
 
-import org.hibernate.annotations.GenericGenerator;
 import util.StringUtil;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Created by Willow on 16/11/19.
  */
-@Entity(name = "User")
-@Table(name = "user")
+//@Entity(name = "User")
+//@Table(name = "user")
 public class User {
     private Integer id;
     private String loginName;
@@ -27,9 +21,9 @@ public class User {
     public User() {
     }
 
-    @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+//    @Id
+//    @GeneratedValue(generator = "increment")
+//    @GenericGenerator(name = "increment", strategy = "increment")
     public Integer getId() {
         return id;
     }

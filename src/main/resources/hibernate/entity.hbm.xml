@@ -4,5 +4,12 @@
         <id column="id" name="id">
             <generator class="native"/>
         </id>
+        <property name="loginName" column="login_name"/>
+        <property name="userName" column="user_name"/>
+        <property name="email"/>
+        <property name="phone"/>
+        <property name="password"/>
+        <property name="status"/>
+        <property name="createTime" column="create_time"/>
     </class>
 </hibernate-mapping>

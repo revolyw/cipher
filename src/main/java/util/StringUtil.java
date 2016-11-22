@@ -1,8 +1,6 @@
 package util;
 
 import org.apache.commons.codec.binary.Base64;
-import org.hibernate.bytecode.spi.BytecodeEnhancementMetadata;
-
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
