@@ -8,7 +8,8 @@
         <param-value>
             /WEB-INF/dispatcher-servlet.xml,
             classpath:spring/applicationContext.xml, <!--须配置ContextLoaderListener才能生效-->
-            classpath:spring/dataSource-local.xml
+            classpath:spring/dataSource-local.xml,
+            classpath:spring/cipher-dao.xml
         </param-value>
     </context-param>
     <context-param>

@@ -4,6 +4,10 @@ import dao.UserDao;
 import dto.AjaxResult;
 import model.Cipher;
 import model.User;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import util.ExcelUtil;
@@ -19,11 +23,14 @@ import java.util.List;
 // 并认识到这种企图是大错特错，请增加
 // 下面这个计数器的个数，用来对后来人进行警告：
 // 浪费在这里的总时间 = 39h
-/** * 致终于来到这里的勇敢的人：
-    你是被上帝选中的人，英勇的、不辞劳苦的、不眠不修的来修改
-我们这最棘手的代码的编程骑士。你，我们的救世主，人中之龙，
-我要对你说：永远不要放弃，永远不要对自己失望，永远不要逃走，辜负了自己。
-永远不要哭啼，永远不要说再见。永远不要说谎来伤害自己。 */
+
+/**
+ * 致终于来到这里的勇敢的人：
+ * 你是被上帝选中的人，英勇的、不辞劳苦的、不眠不修的来修改
+ * 我们这最棘手的代码的编程骑士。你，我们的救世主，人中之龙，
+ * 我要对你说：永远不要放弃，永远不要对自己失望，永远不要逃走，辜负了自己。
+ * 永远不要哭啼，永远不要说再见。永远不要说谎来伤害自己。
+ */
 // Exception up = new Exception("Something is really wrong."); throw up; 
 // 一些修改1 - 2002/6/7 增加临时的跟踪登录界面
 // 一些修改2 - 2007/5/22 我临时的犯傻
@@ -36,7 +43,11 @@ import java.util.List;
 // 晕了，以后再修改
 // 神奇。勿动。
 @RestController
+@Configuration
 public class RestfulController {
+    @Autowired
+    private UserDao userDao;
+
     @RequestMapping(value = "/getCipher", method = RequestMethod.GET)
     public Cipher getCipher(@RequestParam(value = "plain", defaultValue = "i'm a plain") String plain) {
         Cipher cipher = new Cipher();
@@ -51,6 +62,7 @@ public class RestfulController {
 
     /**
      * 测试解析Excel
+     *
      * @return
      */
     @RequestMapping("/resolveExcel")
@@ -58,7 +70,7 @@ public class RestfulController {
         AjaxResult result = new AjaxResult();
         String path = "/Users/Willow/Documents/test.xls";
         try {
-             List<List<String>> contentList = ExcelUtil.readExcelFile(path, 2);
+            List<List<String>> contentList = ExcelUtil.readExcelFile(path, 2);
             result.setData(contentList);
         } catch (IOException e) {
             result.setMsg("解析失败");
@@ -69,12 +81,15 @@ public class RestfulController {
 
     /**
      * 测试数据源配置
+     *
      * @return
      */
     @RequestMapping("/testDataSource")
-    public AjaxResult testDataSource(){
+    public AjaxResult testDataSource() {
         AjaxResult result = AjaxResult.newInstance();
-        User user = new UserDao().find("willow");
+        DetachedCriteria dc = DetachedCriteria.forClass(User.class);
+        dc.add(Restrictions.eq("userName", "willow"));
+        User user = userDao.find(dc);
         result.setData(user);
         return result;
     }
