@@ -87,9 +87,8 @@ public class RestfulController {
     @RequestMapping("/testDataSource")
     public AjaxResult testDataSource() {
         AjaxResult result = AjaxResult.newInstance();
-        DetachedCriteria dc = DetachedCriteria.forClass(User.class);
-        dc.add(Restrictions.eq("userName", "willow"));
-        User user = userDao.find(dc);
+//        User user = userDao.findOne(1);
+        User user = userDao.findByField("userName", "willow");
         result.setData(user);
         return result;
     }
