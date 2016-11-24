@@ -1,14 +1,11 @@
 package dao.base;
 
-import com.sun.org.apache.xml.internal.security.keys.keyresolver.implementations.PrivateKeyResolver;
 import org.apache.log4j.Logger;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
-
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-import java.lang.reflect.Type;
 
 /**
  * Created by Willow on 16/11/22.

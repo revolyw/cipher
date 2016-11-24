@@ -1,5 +1,8 @@
 .gitignore
 
+# jRebel产生的文件
+rebel.xml
+
 # 操作系统文件
 *.DS_Store
 
