@@ -1,5 +1,8 @@
+<%--<%@ page isELIgnored="false"%>--%>
 <html>
-<body>
-<h2>Hello World! i'm ModelAndView</h2>
+<h2>Hello World ! i'm ModelAndView</h2>
+${user.userName}
+<br/>
+${isForwarded}
 </body>
 </html>

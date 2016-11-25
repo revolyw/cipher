@@ -4,16 +4,18 @@ import dao.UserDao;
 import dto.AjaxResult;
 import model.Cipher;
 import model.User;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import util.ExcelUtil;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Willow on 16/11/13.
@@ -55,9 +57,43 @@ public class RestfulController {
         return cipher;
     }
 
+    /**
+     * 返回指定视图
+     *
+     * @return
+     */
     @RequestMapping("/index")
     public ModelAndView index() {
         return new ModelAndView("index");
+    }
+
+    /**
+     * 转发的目标
+     *
+     * @return
+     */
+    @RequestMapping("/beForwarded")
+    public ModelAndView beForwarded(ModelAndView modelAndView) {
+        //接收到转发带来的ModelAndView后添加一些数据，并设置新的视图并返回输出
+        modelAndView.getModel().put("isForwarded", true);
+        modelAndView.setViewName("index");
+        return modelAndView;//实际输出对象
+    }
+
+    /**
+     * 请求转发
+     *
+     * @return
+     */
+    @RequestMapping("/forward")
+    public ModelAndView forward() {
+        //做一些处理
+        User user = userDao.findByField("userName", "willow");
+        Map model = new HashMap();
+        model.put("user", user);
+        //在ModelAndView中添加转发的目标
+        ModelAndView modelAndView = new ModelAndView("forward:/beForwarded", model);
+        return modelAndView;//转发
     }
 
     /**
