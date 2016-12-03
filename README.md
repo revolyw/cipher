@@ -1,11 +1,15 @@
 # cipher
 
 > 这是一个很纯粹的项目，为了集成我所学得一些零散的技术。方便日后复用。下面我将按时间结合技术点来记述cipher的进程。 2016-11
+
 ### 2016-12-03
 
 1. 新增枚举工具类util.EnumUtil，用于处理由type.EnumInterface接口规范的枚举类型
 2. LoggerHandler改为LoggerUtil,可以更精确定位日志输出点,并且重载了几种常用的日志级别输出方法，使用更简洁
-3. 新增了Util包下各个工具类的单元测试类
+3. 新增util包下各个工具类的单元测试类
+4. 新增commons-beanutils包依赖
+5. 新增util.ObjectUtil一般对象工具类，并添加泛型对象深拷贝方法及其对应单元测试
+6. 新增model.BaseModel抽象类,所有model pojo都将继承该类，该类对pojo常用的功能做了一般实现，如toJson，toString等
 
 ### 2016-11-25
 

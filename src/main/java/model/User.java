@@ -1,14 +1,14 @@
 package model;
 
+import com.alibaba.fastjson.JSONObject;
 import util.StringUtil;
+
 import java.util.Date;
 
 /**
  * Created by Willow on 16/11/19.
  */
-//@Entity(name = "User")
-//@Table(name = "user")
-public class User {
+public class User extends BaseModel{
     private Integer id;
     private String loginName;
     private String userName;
@@ -21,9 +21,6 @@ public class User {
     public User() {
     }
 
-//    @Id
-//    @GeneratedValue(generator = "increment")
-//    @GenericGenerator(name = "increment", strategy = "increment")
     public Integer getId() {
         return id;
     }

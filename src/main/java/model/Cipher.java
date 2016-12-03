@@ -1,11 +1,9 @@
 package model;
 
-import com.alibaba.fastjson.JSONObject;
-
 /**
  * Created by Willow on 16/11/13.
  */
-public class Cipher {
+public class Cipher extends BaseModel {
     private Integer id;
     private String plain;
     private String cipher;
@@ -77,11 +75,5 @@ public class Cipher {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public JSONObject toJson() {
-        JSONObject obj = new JSONObject();
-        obj.put("cipher", this);
-        return obj;
     }
 }
