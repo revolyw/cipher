@@ -8,7 +8,7 @@ public class AjaxResult {
     private String msg;
     private Object data;
 
-    public AjaxResult() {
+    private AjaxResult() {
         this.isSuccess = true;
         this.msg = "";
         this.data = null;

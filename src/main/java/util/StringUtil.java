@@ -25,7 +25,7 @@ public class StringUtil {
     }
 
     /**
-     * 产生md5码
+     * md5散列值
      *
      * @param str
      * @return

@@ -51,7 +51,7 @@ public class UserAgentUtil {
     }
 
     /**
-     * 获取客户端真实ip
+     * 获取客户端真实ip（用于设置了反向代理的情况下获取ip）
      *
      * @param rq
      * @return

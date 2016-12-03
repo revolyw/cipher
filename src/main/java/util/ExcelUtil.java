@@ -44,7 +44,7 @@ public class ExcelUtil {
      * @return
      * @throws IOException
      */
-    public static List<List<String>> readXlsxFile(InputStream inputStream, int columnNum) throws IOException {
+    private static List<List<String>> readXlsxFile(InputStream inputStream, int columnNum) throws IOException {
         XSSFWorkbook xssfWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet xssfSheet = xssfWorkbook.getSheetAt(0);
         int currRow = 0;
@@ -105,7 +105,7 @@ public class ExcelUtil {
      * @return
      * @throws IOException
      */
-    public static List<List<String>> readXlsFile(InputStream inputStream, int columnNum) throws IOException {
+    private static List<List<String>> readXlsFile(InputStream inputStream, int columnNum) throws IOException {
         POIFSFileSystem pfs = new POIFSFileSystem(inputStream);
         HSSFWorkbook workbook = new HSSFWorkbook(pfs);
         int currRow = 0;

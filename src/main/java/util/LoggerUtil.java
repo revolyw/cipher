@@ -52,8 +52,4 @@ public class LoggerUtil {
         StackTraceElement stackTop = stack[stack.length - 1]; //栈顶，异常产生的地方
         return stackTop.getClassName() + "." + stackTop.getMethodName() + "(" + stackTop.getLineNumber() + ")";
     }
-
-    public static void main(String[] args) {
-        LoggerUtil.info("this is a log message!!!");
-    }
 }
