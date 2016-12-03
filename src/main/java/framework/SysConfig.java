@@ -1,5 +1,6 @@
 package framework;
-import util.LoggerHanlder;
+
+import util.LoggerUtil;
 
 /**
  * 系统初始化配置
@@ -15,6 +16,6 @@ public class SysConfig {
     }
 
     public void init() {
-        LoggerHanlder.info("this is a messsage from sysconfig");
+        LoggerUtil.info("this is a message", this.getClass());
     }
 }

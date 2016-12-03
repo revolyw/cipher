@@ -37,7 +37,7 @@ public class StringUtil {
             //获取MD5消息摘要工具
             md5 = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
-            LoggerHanlder.error(e.getStackTrace().toString());
+            LoggerUtil.error(e.getStackTrace().toString());
         }
         //base64编码器
         Base64 base64 = new Base64();
@@ -49,13 +49,13 @@ public class StringUtil {
             byte[] base64DigestBytes = base64.encode(digestBytes);//采用base64编码消息摘要字节序列
             digestString = new String(base64DigestBytes);//生成消息摘要字符串
         } catch (UnsupportedEncodingException e) {
-            LoggerHanlder.error("md5 encryption failed! \n " + e.getStackTrace());
+            LoggerUtil.error("md5 encryption failed! \n " + e.getStackTrace());
         }
         return digestString;
     }
 
     public static void main(String[] args) {
         String str = "yw";
-        LoggerHanlder.println(md5(str));
+        LoggerUtil.println(md5(str));
     }
 }

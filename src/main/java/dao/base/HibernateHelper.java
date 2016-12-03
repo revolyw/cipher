@@ -4,7 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import util.LoggerHanlder;
+import util.LoggerUtil;
 
 /**
  * Created by Willow on 16/11/22.
@@ -17,7 +17,7 @@ public class HibernateHelper {
         try {
             SESSION_FACTORY = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
-            LoggerHanlder.error(ex);
+            LoggerUtil.error(ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
