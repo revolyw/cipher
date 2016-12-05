@@ -2,6 +2,10 @@
 
 > 为了复用,写优雅的代码
 
+### 2016-12-05
+
+1. 引入apache-commons-lang3工具包
+
 ### 2016-12-03
 
 1. 新增枚举工具类util.EnumUtil，用于处理由type.EnumInterface接口规范的枚举类型
