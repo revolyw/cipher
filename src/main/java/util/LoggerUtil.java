@@ -1,6 +1,5 @@
 package util;
 
-import framework.SysConfig;
 import org.apache.log4j.Logger;
 
 /**
@@ -14,11 +13,6 @@ public class LoggerUtil {
     //日志输出 info信息
     public static void info(String message) {
         logger.info(getCaller() + " : " + message);
-    }
-
-    //日志输出 info信息及产生info信息的类
-    public static void info(String message, Class<?> cls) {
-        logger.info(getCaller() + " : " + message + " from [ " + cls.getName() + " ]");
     }
 
     //日志输出 debug信息 及 debug异常栈
@@ -46,10 +40,19 @@ public class LoggerUtil {
         System.out.println(message);
     }
 
-    //默认输出 异常栈顶（异常位置）
+    //找到
     private static String getCaller() {
-        StackTraceElement stack[] = (new Throwable()).getStackTrace();
-        StackTraceElement stackTop = stack[stack.length - 1]; //栈顶，异常产生的地方
-        return stackTop.getClassName() + "." + stackTop.getMethodName() + "(" + stackTop.getLineNumber() + ")";
+        StackTraceElement[] stack = (new Throwable()).getStackTrace();
+        if (null == stack || stack.length <= 0)
+            return "";
+        StackTraceElement target = null;
+        for (int i = 0; i < stack.length - 1; i++) {
+            // 从运行堆栈中找到目标栈帧（调用日志打印的位置）
+            if (null != stack[i] && stack[i].getClassName().equals(LoggerUtil.class.getName())) {
+                target = stack[i + 2];
+                break;
+            }
+        }
+        return (null == target) ? "[ null ]" : target.getClassName() + "." + target.getMethodName() + "(" + target.getLineNumber() + ")";
     }
 }

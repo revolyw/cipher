@@ -2,6 +2,21 @@
 
 > 为了复用,写优雅的代码
 
+### 2016-12-27
+1. 新增Spring-security-web,config包,web.xml添加DelegateFilter
+2. 新增CSRF protection相关代码CsrfFilter，CsrfTokenFactory，spring-security.xml
+3. 新增403页面及csrf演示demo页面（CSRFPage.jsp,CSRF.jsp）
+4. 新增重定向至腾讯企业邮箱的接口
+
+### 2016-12-16
+1. 新增404及500跳转页并在web.xml中配置
+2. 新增异常捕捉切面framework.ExceptionCaptor（新增aspectjweaver的jar包依赖）
+3. 修改LoggerUtil类，现可通过反射自动获取写日志的位置
+
+### 2016-12-08
+
+1. 新增测试实时修改jvm参数的访问接口
+
 ### 2016-12-05
 
 1. 引入apache-commons-lang3工具包

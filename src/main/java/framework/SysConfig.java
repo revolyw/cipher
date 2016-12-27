@@ -16,6 +16,6 @@ public class SysConfig {
     }
 
     public void init() {
-        LoggerUtil.info("this is a message", this.getClass());
+        LoggerUtil.info("initialize Sysconfig success!");
     }
 }

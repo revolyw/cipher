@@ -1,0 +1,21 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <http auto-config="true" authentication-manager-ref="fake">
+        <!-- csrf -->
+        <csrf/>
+        <custom-filter ref="csrfFilter" after="ANONYMOUS_FILTER"/>
+    </http>
+
+    <beans:bean id="csrfFilter" class="security.CsrfFilter">
+        <beans:constructor-arg ref="csrfTokenRepository"/>
+    </beans:bean>
+
+    <beans:bean id="csrfTokenRepository" class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository"/>
+    <authentication-manager id="fake"/>
+</beans:beans>

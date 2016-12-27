@@ -9,7 +9,8 @@
             /WEB-INF/dispatcher-servlet.xml,
             classpath:spring/applicationContext.xml, <!--须配置ContextLoaderListener才能生效-->
             classpath:spring/dataSource-local.xml,
-            classpath:spring/cipher-dao.xml
+            classpath:spring/cipher-dao.xml,
+            classpath:spring/spring-security.xml
         </param-value>
     </context-param>
     <context-param>
@@ -38,23 +39,21 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--&lt;!&ndash;open session view filter&ndash;&gt;-->
-    <!--<filter>-->
-    <!--<filter-name>hibernateFilter</filter-name>-->
-    <!--<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>-->
-    <!--<init-param>-->
-    <!--<param-name>flushMode</param-name>-->
-    <!--<param-value>AUTO</param-value>-->
-    <!--</init-param>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>hibernateFilter</filter-name>-->
-    <!--<url-pattern>/md/openapi/*</url-pattern>-->
-    <!--</filter-mapping>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>hibernateFilter</filter-name>-->
-    <!--<url-pattern>/admin/*</url-pattern>-->
-    <!--</filter-mapping>-->
+    <!--csrf filter-->
+    <filter>
+        <filter-name>csrfFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>csrfFilter</filter-name>
+        <url-pattern>/testCSRF</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>csrfFilter</filter-name>
+        <url-pattern>/pageCSRF</url-pattern>
+    </filter-mapping>
+
+
     <!--DispatcherServlet-->
     <servlet>
         <servlet-name>dispatcher</servlet-name>
@@ -65,6 +64,21 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/403.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500.jsp</location>
+    </error-page>
 </web-app>
 
 
