@@ -19,8 +19,25 @@
     <!-- 激活自动代理功能 -->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
+    <!--拦截器定义-->
+    <mvc:interceptors>
+        <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+        <bean class="framework.HttpInterceptor"/>
+        <mvc:interceptor>
+            <mvc:mapping path="/test/justme.do"/>
+            <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <bean class="framework.HttpInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!--default-servlet用于放行静态资源-->
+    <mvc:default-servlet-handler/>
+
     <!-- 注册驱动 -->
     <mvc:annotation-driven>
+        <!--Controller参数解析再封装-->
+        <mvc:argument-resolvers>
+            <bean class="framework.HTTPHandlerMethodArgumentResolver"/>
+        </mvc:argument-resolvers>
         <!--响应支持FastJson-->
         <mvc:message-converters register-defaults="true">
             <bean id="fastJsonHttpMessageConverter"
@@ -28,10 +45,40 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <!--配置视图解析器-->
+    <!--视图freemarker解释器 -->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="suffix">
+            <value>.ftl</value>
+        </property>
+        <property name="contentType" value="text/html;charset=UTF-8"></property>
+        <property name="order" value="1"/>
+    </bean>
+    <!--jsp视图解析器-->
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>
         <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
+        <property name="order" value="2"/>
+    </bean>
+
+    <!-- Freemarker模板引擎配置 -->
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="configuration">
+            <bean class="freemarker.template.Configuration">
+                <property name="directoryForTemplateLoading" value="WEB-INF/templates"/>
+                <property name="settings">
+                    <props>
+                        <prop key="template_update_delay">0</prop>
+                        <prop key="default_encoding">UTF-8</prop>
+                        <prop key="number_format">0.##########</prop>
+                        <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                        <prop key="classic_compatible">true</prop>
+                        <prop key="template_exception_handler">ignore</prop>
+                    </props>
+                </property>
+            </bean>
+        </property>
     </bean>
 </beans>

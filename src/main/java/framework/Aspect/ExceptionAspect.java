@@ -1,4 +1,4 @@
-package framework;
+package framework.Aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -11,7 +11,7 @@ import util.LoggerUtil;
  */
 @Component
 @Aspect
-public class ExceptionCaptor {
+public class ExceptionAspect {
     //配置切入点,该方法无方法体,主要为方便同类中其他方法使用此处配置的切入点
     @Pointcut("execution(* controller..*.*(..))")
     public void exception() {

@@ -40,7 +40,7 @@ public class LoggerUtil {
         System.out.println(message);
     }
 
-    //找到
+    //案发现场信息
     private static String getCaller() {
         StackTraceElement[] stack = (new Throwable()).getStackTrace();
         if (null == stack || stack.length <= 0)

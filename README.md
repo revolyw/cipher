@@ -2,6 +2,12 @@
 
 > 为了复用,写优雅的代码
 
+### 2017-01-03
+1. 新增freemarker相关配置及依赖
+2. 新增全局拦截器(HttpInterceptor)用于做请求前后置处理
+3. 新增HTTP(对request及response的封装)及HTTPHandlerMethodArgumentResolver(使Controller接收HTTP实例)
+4. 新增CommonController(@Controller，返回视图解析器解析的视图),区别于RestfulContoller(@RestController,返回消息转换器转换的视图)
+
 ### 2016-12-27
 1. 新增Spring-security-web,config包,web.xml添加DelegateFilter
 2. 新增CSRF protection相关代码CsrfFilter，CsrfTokenFactory，spring-security.xml
@@ -10,7 +16,7 @@
 
 ### 2016-12-16
 1. 新增404及500跳转页并在web.xml中配置
-2. 新增异常捕捉切面framework.ExceptionCaptor（新增aspectjweaver的jar包依赖）
+2. 新增异常捕捉切面framework.ExceptionAspect（新增aspectjweaver的jar包依赖）
 3. 修改LoggerUtil类，现可通过反射自动获取写日志的位置
 
 ### 2016-12-08

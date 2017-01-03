@@ -2,10 +2,14 @@ package controller;
 
 import dao.UserDao;
 import dto.AjaxResult;
+import framework.HTTP;
 import model.Cipher;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,11 +28,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 不要被名字迷惑，这并不是一个彻底的restful的接口控制器
+ * RestfulController
+ * 将按mvc:message-converters注解中配置的消息转换器解析视图
+ * 或自己生成ModelAndView实例
+ * <p>
  * Created by Willow on 16/11/13.
+ * 写这段代码的时候，只有上帝和我知道它是干嘛的
+ * 现在，只有上帝知道
  */
-//写这段代码的时候，只有上帝和我知道它是干嘛的
-//现在，只有上帝知道
+
 @RestController
 @Configuration
 public class RestfulController {
@@ -76,33 +84,6 @@ public class RestfulController {
         return cipher;
     }
 
-    //返回指定视图
-    @RequestMapping("/index")
-    public ModelAndView index() {
-        return new ModelAndView("index");
-    }
-
-    //转发的目标
-    @RequestMapping("/beForwarded")
-    public ModelAndView beForwarded(ModelAndView modelAndView) {
-        //接收到转发带来的ModelAndView后添加一些数据，并设置新的视图并返回输出
-        modelAndView.getModel().put("isForwarded", true);
-        modelAndView.setViewName("index");
-        return modelAndView;//实际输出对象
-    }
-
-    //请求转发
-    @RequestMapping("/forward")
-    public ModelAndView forward() {
-        //做一些处理
-        User user = userDao.findByField("userName", "willow");
-        Map model = new HashMap();
-        model.put("user", user);
-        //在ModelAndView中添加转发的目标
-        ModelAndView modelAndView = new ModelAndView("forward:/beForwarded", model);
-        return modelAndView;//转发
-    }
-
     //测试解析Excel
     @RequestMapping("/resolveExcel")
     public AjaxResult doResolveExcel() {
@@ -134,47 +115,5 @@ public class RestfulController {
         AjaxResult result = AjaxResult.newInstance();
         LoggerUtil.info("this is a log");
         return result;
-    }
-
-    @RequestMapping("/test404")
-    public ModelAndView test404(HttpServletRequest
-                                        httpServletRequest, HttpServletResponse httpServletResponse) throws IOException {
-        httpServletResponse.setStatus(404);
-        return new ModelAndView("404");
-    }
-
-    @RequestMapping("/test500")
-    public ModelAndView test500(HttpServletRequest
-                                        httpServletRequest, HttpServletResponse httpServletResponse) throws IOException {
-        httpServletResponse.setStatus(500);
-        return new ModelAndView("error");
-    }
-
-    @RequestMapping("/testAspect")
-    public ModelAndView testAspect() throws Exception {
-        if (true) {
-            int a = 1 / 0;
-            throw new Exception();
-        }
-        return new ModelAndView("500");
-    }
-
-    //测试CSRF漏洞的页面
-    @RequestMapping("/pageCSRF")
-    public ModelAndView pageCSRF(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("CSRFPage");
-        CsrfTokenFactory.setToken(request,modelAndView);
-        return modelAndView;
-    }
-    @RequestMapping("/testCSRF")
-    public ModelAndView testCSRF(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("CSRF");
-        return modelAndView;
-    }
-
-    //提供重定向至腾讯邮箱的接口
-    @RequestMapping("/redirectToEXMail")
-    public void redirectToEXMail(HttpServletResponse response) throws IOException {
-        response.sendRedirect("http://exmail.qq.com/login");
     }
 }

@@ -53,7 +53,15 @@
         <url-pattern>/pageCSRF</url-pattern>
     </filter-mapping>
 
-
+    <!--设置静态资源部拦截过滤，default这个servlet配置在dispatcher-servlet.xml中（<mvc:default-servlet-handler/>）-->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>/dist/*</url-pattern>
+        <url-pattern>/img/*</url-pattern>
+        <url-pattern>/resource/*</url-pattern>
+    </servlet-mapping>
     <!--DispatcherServlet-->
     <servlet>
         <servlet-name>dispatcher</servlet-name>

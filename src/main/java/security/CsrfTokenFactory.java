@@ -1,6 +1,8 @@
 package security;
 
 import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,14 +16,12 @@ import java.util.Map;
  */
 public class CsrfTokenFactory {
     //结合模板引擎生产csrf token
-    public static void setToken(HttpServletRequest request, ModelAndView modelAndView) {
+    public static void setToken(HttpServletRequest request, ModelMap context) {
         //尝试拿csrf filter中设置的token
         CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
         if (null != csrfToken) {
-            Map model = new HashMap();
-            model.put("_csrf", csrfToken);
-            model.put("_csrf_header", "X-CSRF-TOKEN");
-            modelAndView.addObject(model);
+            context.put("_csrf", csrfToken);
+            context.put("_csrf_header", "X-CSRF-TOKEN");
         }
     }
 }
