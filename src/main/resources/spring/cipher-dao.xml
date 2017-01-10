@@ -14,7 +14,7 @@
     <!-- ************************************************************************ -->
     <!-- ************************************************************************ -->
 
-    <bean id="baseDao" class="dao.base.BaseDaoImpl">
+    <bean id="baseDao" class="framework.dao.BaseDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     <bean id="userDao" class="dao.UserDao" parent="baseDao"/>

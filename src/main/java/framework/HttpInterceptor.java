@@ -2,7 +2,7 @@ package framework;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import util.LoggerUtil;
+import framework.util.LoggerUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +19,7 @@ public class HttpInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object handler, ModelAndView modelAndView) throws Exception {
-        LoggerUtil.info(null == modelAndView ? "null" : modelAndView.toString());
+//        LoggerUtil.info(null == modelAndView ? "null" : modelAndView.toString());
     }
 
     @Override

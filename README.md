@@ -2,6 +2,10 @@
 
 > 为了复用,写优雅的代码
 
+### 2017-01-10
+1. 新增使用原生FilterChain来走csrf防护，避免过重的spring-security FilterChain
+2. 重写HttpSessionCsrfTokenRepository来生产csrf防护token
+
 ### 2017-01-03
 1. 新增freemarker相关配置及依赖
 2. 新增全局拦截器(HttpInterceptor)用于做请求前后置处理
@@ -9,8 +13,8 @@
 4. 新增CommonController(@Controller，返回视图解析器解析的视图),区别于RestfulContoller(@RestController,返回消息转换器转换的视图)
 
 ### 2016-12-27
-1. 新增Spring-security-web,config包,web.xml添加DelegateFilter
-2. 新增CSRF protection相关代码CsrfFilter，CsrfTokenFactory，spring-security.xml
+1. 新增Spring-framework.security-web,config包,web.xml添加DelegateFilter
+2. 新增CSRF protection相关代码CsrfFilter，CsrfTokenFactory，spring-framework.security.xml
 3. 新增403页面及csrf演示demo页面（CSRFPage.jsp,CSRF.jsp）
 4. 新增重定向至腾讯企业邮箱的接口
 

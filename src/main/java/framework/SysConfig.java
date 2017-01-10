@@ -1,6 +1,6 @@
 package framework;
 
-import util.LoggerUtil;
+import framework.util.LoggerUtil;
 
 /**
  * 系统初始化配置

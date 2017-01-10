@@ -2,13 +2,13 @@ package controller;
 
 import dao.UserDao;
 import framework.HTTP;
+import framework.security.HttpSessionCsrfTokenRepository;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import security.CsrfTokenFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -74,7 +74,7 @@ public class CommonController {
     //测试CSRF漏洞的页面
     @RequestMapping("/pageCSRF")
     public String pageCSRF(HTTP http, ModelMap context) {
-        CsrfTokenFactory.setToken(http.getRequest(), context);
+        HttpSessionCsrfTokenRepository.setToken(http.getRequest(), context);
         return "csrf_page";
     }
 

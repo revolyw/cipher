@@ -91,13 +91,13 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>1.9.0.M1</version>
         </dependency>
-        <!--spring security seb-->
+        <!--spring framework.security seb-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
             <version>3.2.5.RELEASE</version>
         </dependency>
-        <!--spring security config-->
+        <!--spring framework.security config-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
@@ -109,7 +109,7 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
         </dependency>
-        <!--UA util-->
+        <!--UA framework.util-->
         <dependency>
             <groupId>eu.bitwalker</groupId>
             <artifactId>UserAgentUtils</artifactId>

@@ -1,4 +1,4 @@
-package util;
+package framework.util;
 
 import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.OperatingSystem;

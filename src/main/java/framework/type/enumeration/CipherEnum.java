@@ -1,6 +1,6 @@
-package type.enumeration;
+package framework.type.enumeration;
 
-import type.EnumInterface;
+import framework.type.EnumInterface;
 
 /**
  * 加密类型枚举

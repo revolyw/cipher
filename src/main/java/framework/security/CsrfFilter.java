@@ -1,4 +1,4 @@
-package security;
+package framework.security;
 
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.access.AccessDeniedHandlerImpl;
@@ -8,7 +8,7 @@ import org.springframework.security.web.util.UrlUtils;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.Assert;
 import org.springframework.web.filter.OncePerRequestFilter;
-import util.LoggerUtil;
+import framework.util.LoggerUtil;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Willow on 12/25/16.
- * 改写 org.springframework.security.web.csrf.CsrfFilter
+ * 改写 org.springframework.framework.security.web.csrf.CsrfFilter
  */
 public class CsrfFilter extends OncePerRequestFilter {
     private final CsrfTokenRepository tokenRepository;
@@ -89,7 +89,7 @@ public class CsrfFilter extends OncePerRequestFilter {
             }
         };
         /* (non-Javadoc)
-         * @see org.springframework.security.web.util.matcher.RequestMatcher#matches(javax.servlet.http.HttpServletRequest)
+         * @see org.springframework.framework.security.web.framework.util.matcher.RequestMatcher#matches(javax.servlet.http.HttpServletRequest)
          */
 
         //根据外层调用的

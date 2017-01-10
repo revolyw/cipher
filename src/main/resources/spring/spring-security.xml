@@ -6,16 +6,16 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-    <http auto-config="true" authentication-manager-ref="fake">
-        <!-- csrf -->
-        <csrf/>
-        <custom-filter ref="csrfFilter" after="ANONYMOUS_FILTER"/>
-    </http>
+    <!--<http auto-config="true" authentication-manager-ref="fake">-->
+    <!--&lt;!&ndash; csrf &ndash;&gt;-->
+    <!--<csrf/>-->
+    <!--<custom-filter ref="csrfFilter" after="ANONYMOUS_FILTER"/>-->
+    <!--</http>-->
 
-    <beans:bean id="csrfFilter" class="security.CsrfFilter">
-        <beans:constructor-arg ref="csrfTokenRepository"/>
-    </beans:bean>
+    <!--<beans:bean id="csrfFilter" class="framework.security.CsrfFilter">-->
+    <!--<beans:constructor-arg ref="csrfTokenRepository"/>-->
+    <!--</beans:bean>-->
 
-    <beans:bean id="csrfTokenRepository" class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository"/>
-    <authentication-manager id="fake"/>
+    <!--<beans:bean id="csrfTokenRepository" class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository"/>-->
+    <!--<authentication-manager id="fake"/>-->
 </beans:beans>

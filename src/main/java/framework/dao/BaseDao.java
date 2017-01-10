@@ -1,4 +1,4 @@
-package dao.base;
+package framework.dao;
 
 import org.springframework.data.repository.CrudRepository;
 

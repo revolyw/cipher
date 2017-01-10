@@ -1,6 +1,6 @@
 package dao;
 
-import dao.base.BaseDaoImpl;
+import framework.dao.BaseDaoImpl;
 import model.User;
 
 /**

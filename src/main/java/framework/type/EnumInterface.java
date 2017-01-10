@@ -1,4 +1,4 @@
-package type;
+package framework.type;
 
 /**
  * 枚举类型接口

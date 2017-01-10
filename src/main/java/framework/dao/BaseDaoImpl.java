@@ -1,4 +1,4 @@
-package dao.base;
+package framework.dao;
 
 import org.apache.log4j.Logger;
 import org.hibernate.criterion.DetachedCriteria;

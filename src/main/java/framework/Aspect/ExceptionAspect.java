@@ -4,7 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
-import util.LoggerUtil;
+import framework.util.LoggerUtil;
 
 /**
  * Created by Willow on 12/13/16.

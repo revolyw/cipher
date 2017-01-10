@@ -1,9 +1,8 @@
-package util;
+package framework.util;
 
-import model.Cipher;
 import org.junit.Test;
-import type.EnumInterface;
-import type.enumeration.CipherEnum;
+import framework.type.EnumInterface;
+import framework.type.enumeration.CipherEnum;
 
 import static org.junit.Assert.*;
 

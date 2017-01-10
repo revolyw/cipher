@@ -1,8 +1,8 @@
-package util;
+package framework.util;
 
 
-import type.enumeration.CipherEnum;
-import type.EnumInterface;
+import framework.type.enumeration.CipherEnum;
+import framework.type.EnumInterface;
 
 import java.lang.reflect.Method;
 

@@ -1,8 +1,6 @@
-package util;
+package framework.util;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Willow on 12/4/16.
