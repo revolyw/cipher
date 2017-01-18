@@ -17,7 +17,7 @@ public class ExceptionAspect {
     public void exception() {
     }
 
-    @Pointcut("execution(* service..*.*(..))")
+    @Pointcut("execution(* service..*.*(..)) || @annotation(check)")
     public void aspect() {
     }
 
@@ -39,23 +39,23 @@ public class ExceptionAspect {
 
     //配置环绕通知,使用在方法aspect()上注册的切入点
 //    @Around("aspect()")
-    public void around(JoinPoint joinPoint) {
+    public Object around(ProceedingJoinPoint joinPoint) {
         long start = System.currentTimeMillis();
         try {
-            ((ProceedingJoinPoint) joinPoint).proceed();
+            Object result= joinPoint.proceed();
             long end = System.currentTimeMillis();
             LoggerUtil.info("around " + joinPoint + "\tUse time : " + (end - start) + " ms!");
-
+            return result;
         } catch (Throwable e) {
             long end = System.currentTimeMillis();
             LoggerUtil.info("around " + joinPoint + "\tUse time : " + (end - start) + " ms with exception : " + e.getMessage());
-
         }
+        return null;
     }
 
     //配置后置返回通知,使用在方法aspect()上注册的切入点
-    @AfterReturning("aspect()")
-    public void afterReturn(JoinPoint joinPoint) {
+    @AfterReturning(value = "aspect()", returning = "retVal")
+    public void afterReturn(JoinPoint joinPoint, Object retVal) {
         LoggerUtil.info("afterReturn " + joinPoint);
     }
 
