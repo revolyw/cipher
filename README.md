@@ -1,7 +1,5 @@
 # cipher
 
-> 为了复用,写优雅的代码
-
 ### 2017-01-10
 1. 新增使用原生FilterChain来走csrf防护，避免过重的spring-security FilterChain
 2. 重写HttpSessionCsrfTokenRepository来生产csrf防护token
