@@ -1,7 +1,7 @@
 package controller;
 
 import dao.UserDao;
-import framework.HTTP;
+import framework.web.HTTP;
 import framework.security.HttpSessionCsrfTokenRepository;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;

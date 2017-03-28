@@ -17,7 +17,7 @@ public class ExceptionAspect {
     public void exception() {
     }
 
-    @Pointcut("execution(* service..*.*(..)) || @annotation(check)")
+    @Pointcut("execution(* service..*.*(..)) || @annotation(framework.Aspect.Check)")
     public void aspect() {
     }
 

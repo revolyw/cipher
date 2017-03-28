@@ -1,4 +1,4 @@
-package dto;
+package vo;
 
 /**
  * Created by Willow on 16/11/17.
@@ -21,6 +21,11 @@ public class AjaxResult {
 
     public Boolean getSuccess() {
         return isSuccess;
+    }
+
+    public void setSuccess(Object data) {
+        this.isSuccess = true;
+        this.data = data;
     }
 
     public void setSuccess(Boolean success) {

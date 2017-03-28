@@ -1,18 +1,20 @@
 package controller;
 
 import dao.UserDao;
-import dto.AjaxResult;
+import vo.AjaxResult;
+import framework.annotation.JsonRequestMapping;
+import framework.cache.MemCachedManager;
+import framework.util.ExcelUtil;
+import framework.util.LoggerUtil;
+import framework.util.StringUtil;
+import framework.web.HTTP;
 import model.Cipher;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import framework.util.ExcelUtil;
-import framework.util.LoggerUtil;
-import framework.util.StringUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -34,7 +36,7 @@ public class RestfulController {
     private UserDao userDao;
 
     //测试实时修改jvm参数
-    @RequestMapping(value = "/putJvmArgument", method = RequestMethod.GET)
+    @JsonRequestMapping(value = "/putJvmArgument", method = RequestMethod.GET)
     public String putJvmArgument(@RequestParam(value = "argument", defaultValue = "") String argument, @RequestParam(value = "value") String value) {
         if (StringUtil.isEmpty(argument))
             return "argument is null , change failed!";
@@ -67,7 +69,7 @@ public class RestfulController {
     }
 
     //置顶Method，并绑定接受参数,并以json返回pojo,json格式转换详见配置
-    @RequestMapping(value = "/getCipher", method = RequestMethod.GET)
+    @JsonRequestMapping(value = "/getCipher", method = RequestMethod.GET)
     public Cipher getCipher(@RequestParam(value = "plain", defaultValue = "i'm a plain") String plain) {
         Cipher cipher = new Cipher();
         cipher.setPlain(plain);
@@ -75,7 +77,7 @@ public class RestfulController {
     }
 
     //测试解析Excel
-    @RequestMapping("/resolveExcel")
+    @JsonRequestMapping("/resolveExcel")
     public AjaxResult doResolveExcel() {
         AjaxResult result = AjaxResult.newInstance();
         String path = "/Users/Willow/Documents/test.xls";
@@ -90,7 +92,7 @@ public class RestfulController {
     }
 
     //测试数据源配置
-    @RequestMapping("/testDataSource")
+    @JsonRequestMapping("/testDataSource")
     public AjaxResult testDataSource() {
         AjaxResult result = AjaxResult.newInstance();
 //        User user = userDao.findOne(1);
@@ -100,10 +102,21 @@ public class RestfulController {
     }
 
     //日志测试接口
-    @RequestMapping("/getLog")
+    @JsonRequestMapping("/getLog")
     public AjaxResult testLog() {
         AjaxResult result = AjaxResult.newInstance();
         LoggerUtil.info("this is a log");
+        return result;
+    }
+
+    //测试memcached
+    @JsonRequestMapping(value = "/set_and_get_cache", method = RequestMethod.GET)
+    public AjaxResult testMemcache(HTTP http) {
+        String key = http.getString("key", "");
+        String value = http.getString("value", "");
+        AjaxResult result = AjaxResult.newInstance();
+        MemCachedManager.set(key, value);
+        result.setSuccess(MemCachedManager.get(key));
         return result;
     }
 }
