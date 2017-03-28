@@ -54,7 +54,7 @@
     </bean>
     <!--jsp视图解析器-->
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.vo.InternalResourceView"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>
         <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
         <property name="order" value="2"/>
