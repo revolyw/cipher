@@ -3,11 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.willow.framework</groupId>
     <artifactId>cipher</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <version>1.0</version>
     <name>cipher Maven Webapp</name>
     <url>http://maven.apache.org</url>
-
+    <modules>
+        <module>cipher-core</module>
+        <module>cipher-web</module>
+    </modules>
     <properties>
         <junit.version>4.12</junit.version>
         <spring.context.version>4.3.3.RELEASE</spring.context.version>
@@ -21,7 +24,6 @@
     </properties>
 
     <dependencies>
-
         <!--memcached-->
         <dependency>
             <groupId>com.whalin</groupId>
@@ -218,29 +220,29 @@
             </plugin>
             <!--&lt;!&ndash;jar包插件&ndash;&gt;-->
             <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-jar-plugin</artifactId>-->
-                <!--<version>2.2</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>make-a-jar</id>-->
-                        <!--<phase>compile</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>jar</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-                <!--<configuration>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-jar-plugin</artifactId>-->
+            <!--<version>2.2</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>make-a-jar</id>-->
+            <!--<phase>compile</phase>-->
+            <!--<goals>-->
+            <!--<goal>jar</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
 
-                <!--</configuration>-->
+            <!--</configuration>-->
             <!--</plugin>-->
             <!--&lt;!&ndash;war包插件&ndash;&gt;-->
             <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-war-plugin</artifactId>-->
-                <!--<version>2.3</version>-->
-                <!--<configuration>-->
-                <!--</configuration>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-war-plugin</artifactId>-->
+            <!--<version>2.3</version>-->
+            <!--<configuration>-->
+            <!--</configuration>-->
             <!--</plugin>-->
         </plugins>
     </build>

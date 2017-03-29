@@ -1,4 +1,9 @@
 .gitignore
+#cipher-core模块
+cipher-core/target/
+
+#cipher-web模块
+cipher-web/target/
 
 # jRebel产生的文件
 rebel.xml
