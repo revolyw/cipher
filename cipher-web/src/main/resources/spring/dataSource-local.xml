@@ -14,7 +14,7 @@
     <!--session工厂-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <!-- 注入连接池 ，是druid连接池-->
-        <property name="dataSource" ref="dataSource"></property>
+        <property name="dataSource" ref="dataSource"/>
         <!-- 从配置文件配置hibernate其他属性 -->
         <property name="configLocation" value="classpath:hibernate/hibernate.cfg.xml"/>
     </bean>
