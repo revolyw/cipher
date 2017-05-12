@@ -39,7 +39,7 @@ public class SimpleCsrfFilter implements Filter {
         //URI黑名单
         private List<String> deniedURIs = new ArrayList<String>() {
             {
-                add("/testCSRF");
+                add("/test/csrf/delete_some_data");
             }
         };
         private List<String> deniedActions = new ArrayList<String>() {

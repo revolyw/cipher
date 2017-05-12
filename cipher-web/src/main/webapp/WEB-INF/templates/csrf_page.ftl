@@ -8,9 +8,9 @@
     <title>csrfPage</title>
 </head>
 <body>
-<form action="/testCSRF" method="post">
+<form action="/test/csrf/delete_some_data" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <input type="submit" value="testCSRF">
+    <input type="submit" value="删除一些数据">
 </form>
 </body>
 </html>

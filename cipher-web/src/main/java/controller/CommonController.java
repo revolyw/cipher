@@ -72,13 +72,13 @@ public class CommonController {
     }
 
     //测试CSRF漏洞的页面
-    @RequestMapping("/pageCSRF")
+    @RequestMapping("/test/csrf/page")
     public String pageCSRF(HTTP http, ModelMap context) {
         HttpSessionCsrfTokenRepository.setToken(http.getRequest(), context);
         return "csrf_page";
     }
 
-    @RequestMapping("/testCSRF")
+    @RequestMapping("/test/csrf/delete_some_data")
     public String testCSRF() {
         return "csrf";
     }

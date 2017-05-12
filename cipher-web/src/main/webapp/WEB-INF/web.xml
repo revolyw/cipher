@@ -51,11 +51,11 @@
     </filter>
     <filter-mapping>
         <filter-name>csrfFilter</filter-name>
-        <url-pattern>/testCSRF</url-pattern>
+        <url-pattern>/test/csrf/page</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>csrfFilter</filter-name>
-        <url-pattern>/pageCSRF</url-pattern>
+        <url-pattern>/test/csrf/delete_some_data</url-pattern>
     </filter-mapping>
 
     <!--设置静态资源部拦截过滤，default这个servlet配置在dispatcher-servlet.xml中（<mvc:default-servlet-handler/>）-->
