@@ -1,6 +1,5 @@
-package org.jute.util;
+package framework.util;
 
-import com.jute.framework.util.X509TrustManagerImpl;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.fluent.Form;

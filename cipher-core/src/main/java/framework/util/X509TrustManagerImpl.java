@@ -1,8 +1,9 @@
-package com.jute.framework.util;
+package framework.util;
+
+import javax.net.ssl.X509TrustManager;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
-import javax.net.ssl.X509TrustManager;
 /**
  * X.509标准证书认证
  * Created by Willow on 2/16/17.

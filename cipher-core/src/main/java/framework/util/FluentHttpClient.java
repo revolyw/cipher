@@ -1,4 +1,4 @@
-package org.jute.util;
+package framework.util;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.fluent.Content;
