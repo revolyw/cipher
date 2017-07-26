@@ -32,8 +32,12 @@ import java.util.List;
 @RestController
 @Configuration
 public class RestfulController {
+    private final UserDao userDao;
+
     @Autowired
-    private UserDao userDao;
+    public RestfulController(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     //测试实时修改jvm参数
     @JsonRequestMapping(value = "/putJvmArgument", method = RequestMethod.GET)
