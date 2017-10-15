@@ -1,22 +1,22 @@
-package framework.vo;
+package framework.model.util;
 
 /**
  * Created by Willow on 16/11/17.
  */
-public class AjaxResult {
+public class Return {
     private Boolean isSuccess;
     private String msg;
     private Object data;
 
-    private AjaxResult() {
+    private Return() {
         this.isSuccess = true;
         this.msg = "";
         this.data = null;
     }
 
     //静态工厂方法
-    public static AjaxResult newInstance() {
-        return new AjaxResult();
+    public static Return newInstance() {
+        return new Return();
     }
 
     public Boolean getSuccess() {

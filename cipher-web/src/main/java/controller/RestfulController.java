@@ -6,7 +6,7 @@ import framework.cache.MemCachedManager;
 import framework.util.ExcelUtil;
 import framework.util.LoggerUtil;
 import framework.util.StringUtil;
-import framework.vo.AjaxResult;
+import framework.model.util.Return;
 import framework.web.HTTP;
 import model.Cipher;
 import model.User;
@@ -82,8 +82,8 @@ public class RestfulController {
 
     //测试解析Excel
     @JsonRequestMapping("/resolveExcel")
-    public AjaxResult doResolveExcel() {
-        AjaxResult result = AjaxResult.newInstance();
+    public Return doResolveExcel() {
+        Return result = Return.newInstance();
         String path = "/Users/Willow/Documents/test.xls";
         try {
             List<List<String>> contentList = ExcelUtil.readExcelFile(path, 2);
@@ -97,8 +97,8 @@ public class RestfulController {
 
     //测试数据源配置
     @JsonRequestMapping("/testDataSource")
-    public AjaxResult testDataSource() {
-        AjaxResult result = AjaxResult.newInstance();
+    public Return testDataSource() {
+        Return result = Return.newInstance();
 //        User user = userDao.findOne(1);
         User user = userDao.findByField("userName", "willow");
         result.setData(user);
@@ -107,18 +107,18 @@ public class RestfulController {
 
     //日志测试接口
     @JsonRequestMapping("/getLog")
-    public AjaxResult testLog() {
-        AjaxResult result = AjaxResult.newInstance();
+    public Return testLog() {
+        Return result = Return.newInstance();
         LoggerUtil.info("this is a log");
         return result;
     }
 
     //测试memcached
     @JsonRequestMapping(value = "/set_and_get_cache", method = RequestMethod.GET)
-    public AjaxResult testMemcache(HTTP http) {
+    public Return testMemcache(HTTP http) {
         String key = http.getString("key", "");
         String value = http.getString("value", "");
-        AjaxResult result = AjaxResult.newInstance();
+        Return result = Return.newInstance();
         MemCachedManager.set(key, value);
         result.setSuccess(MemCachedManager.get(key));
         return result;
