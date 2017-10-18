@@ -19,6 +19,7 @@
     <!-- 激活自动代理功能 -->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
+
     <!--拦截器定义-->
     <mvc:interceptors>
         <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
@@ -32,11 +33,16 @@
     <!--default-servlet用于放行静态资源-->
     <mvc:default-servlet-handler/>
 
+    <!--support multipart file upload-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    </bean>
     <!-- 注册驱动 -->
     <mvc:annotation-driven>
         <!--Controller参数解析再封装-->
         <mvc:argument-resolvers>
             <bean class="framework.web.HTTPHandlerMethodArgumentResolver"/>
+
         </mvc:argument-resolvers>
         <!--响应支持FastJson-->
         <mvc:message-converters register-defaults="true">

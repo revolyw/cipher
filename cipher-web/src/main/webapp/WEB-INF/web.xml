@@ -41,8 +41,8 @@
 
     <!--csrf filter 使用spring security的filterChain-->
     <!--<filter>-->
-        <!--<filter-name>csrfFilter</filter-name>-->
-        <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+    <!--<filter-name>csrfFilter</filter-name>-->
+    <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
     <!--</filter>-->
     <!--csrf filter 原生的filterChain-->
     <filter>
@@ -71,6 +71,13 @@
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--support multipart file upload-->
+        <multipart-config>
+            <!--see MultipartConfig fields. properties below either appear at the same time or do not appear.-->
+            <!--<max-file-size>10000000</max-file-size>-->
+            <!--<max-request-size>26214400</max-request-size>-->
+            <!--<file-size-threshold>1048576</file-size-threshold>-->
+        </multipart-config>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>

@@ -2,23 +2,53 @@ package controller;
 
 import framework.util.LoggerHandler;
 import framework.web.HTTP;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 
 /**
  * 测试接口
- * Created by Willow on 10/15/17.
+ *
+ * @author Willow
+ * @date 10/15/17
  */
 @RestController
 public class TestController {
+
+    /**
+     * 测试文件上传
+     *
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    @PostMapping(value = "/upload")
+    public String upload(@RequestParam("file") MultipartFile file) throws IOException {
+        if (!file.isEmpty()) {
+            byte[] bytes = file.getBytes();
+            File outFile = new File("/tmp/test-upload.xls");
+            FileOutputStream outputStream = new FileOutputStream(outFile);
+            outputStream.write(bytes);
+            outputStream.close();
+        }
+        return "ok";
+    }
+
+    /**
+     * 辅助测试网络请求下载文件
+     *
+     * @param http
+     * @throws IOException
+     */
     @RequestMapping(value = "/test/httpClientApiDownload", method = RequestMethod.GET)
     public void testHttpClientApiDownload(HTTP http) throws IOException {
         int width = 100;
